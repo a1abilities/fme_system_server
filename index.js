@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 const { env } = require("./lib/databaseMySQLNew");
 
 // Point static path to dist
-if (env === 'dev' || env === 'uat' || env === 'prod') {
+if (env === 'fme') {
   app.use('/', express.static(path.join(__dirname, 'dist')));
   app.use('/dist', express.static(path.join(__dirname, 'dist')));
 } else {
