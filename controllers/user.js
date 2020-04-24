@@ -115,30 +115,28 @@ const register = async function (req, res, next) {
 				const user_result = await newUser.register();
 				console.log("Saved Successfully.");
 
-
-				// Mail Code /// uncomment on hosting 
-				// (req.body.directorList || []).map(director => {
-				// 	console.log("director list..............", director)
-				// 	let url = 'http://' + domainName + '/api/auth/verifyEmail?accountId=' + accountId + '&name=' + director.uid + '&token=' + token;
+				(req.body.directorList || []).map(director => {
+					console.log("director list..............", director)
+					let url = 'http://' + domainName + '/api/auth/verifyEmail?accountId=' + accountId + '&name=' + director.uid + '&token=' + token;
 					
-				// 	const mail = {
-				// 		from: 'admin@' + domainName,
-				// 		//  to: 'mpurohit88@gmail.com',
-				// 		to: director.email,
-				// 		subject: 'Please verify your email address',
-				// 		text: 'activate your account ',
-				// 		html: '<strong><a href=' + url + '> Please click on a link to ativate your account</a></strong> <br />user Id: ' + director.uid + '<br />password: ' + director.password
-				// 	}
+					const mail = {
+						from: 'admin@' + domainName,
+						//  to: 'mpurohit88@gmail.com',
+						to: director.email,
+						subject: 'Please verify your email address',
+						text: 'activate your account ',
+						html: '<strong><a href=' + url + '> Please click on a link to ativate your account</a></strong> <br />user Id: ' + director.uid + '<br />password: ' + director.password
+					}
 
-				// 	trans.sendMail(mail, (err, info) => {
-				// 		if (err) {
-				// 			return console.log(err);
-				// 		}
-				// 		console.log('Message sent: %s', info.messageId);
-				// 		// Preview only available when sending through an Ethereal account
-				// 		console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-				// 	});
-				// });
+					trans.sendMail(mail, (err, info) => {
+						if (err) {
+							return console.log(err);
+						}
+						console.log('Message sent: %s', info.messageId);
+						// Preview only available when sending through an Ethereal account
+						console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+					});
+				});
 				// newUserRole.user_id = result.id;
 
 				const userRole = await newUserRole.register();
@@ -169,9 +167,9 @@ const verifyEmail = async function (req, res, next) {
 	try {
 		const isVerified = await new Franchise({email: req.body.email}).verifyEmail();
 		if(isVerified !== undefined && isVerified !== null && isVerified !== "" && isVerified.length > 0) {
-		res.send({isVerified : req.body.email});
+			res.send({isVerified : req.body.email});
 		}else{
-		res.send({ isVerified: '' });
+			res.send({ isVerified: '' });
 		}
 		
 	}catch (err) {

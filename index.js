@@ -9,11 +9,10 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
-
 app.use(helmet());
+
+app.use(bodyParser.json({ limit: '15360mb', type: 'application/json' }))
+app.use(bodyParser.urlencoded({ limit: '15360mb', extended: true, type: 'application/json', parameterLimit: 5000000 }))
 
 app.use(cors());
 
@@ -144,15 +143,20 @@ app.use(function (error, req, res, next) {
 
 let port;
 
-if (env === 'dev') {
+
+
+ if (env === 'dev') {
   port = 3006;
-} else if (env === 'uat') {
+ } else if (env === 'uat') {
+
   port = 3005;
-} else if (env === 'prod') {
+ } else if (env === 'prod') {
   port = 3007;
-} else {
+ } else if(env === 'fme') {
+  port = 3011;
+ } else {
   port = 3000;
-}
+ }
 
 app.set('port', port);
 

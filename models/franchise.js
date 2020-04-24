@@ -137,7 +137,7 @@ Franchise.prototype.register = function (newUser) {
                   [6, 'Delivered'],
                   [7, 'Awaiting Remaining'],
                   [8, 'Completed'],
-                  [9, 'Cancelled by FME'],
+                  [9, 'Cancelled by Company'],
                   [10, 'Cancelled by Customer'],
                   [11, 'Archived'],
                 ]
