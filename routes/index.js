@@ -11,7 +11,7 @@ router.get('*', (req, res) => {
 
   // const route = path.join(__dirname, '..', 'dist', 'index.html');
   // Point static path to dist
-  if (env === 'dev' || env === 'uat' || env === 'prod') {
+  if (env === 'fme') {
     const route = path.join(__dirname, '..', 'dist', 'index.html');
     res.sendFile(route);
   } else {

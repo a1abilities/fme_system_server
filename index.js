@@ -143,16 +143,7 @@ app.use(function (error, req, res, next) {
 
 let port;
 
-
-
- if (env === 'dev') {
-  port = 3006;
- } else if (env === 'uat') {
-
-  port = 3005;
- } else if (env === 'prod') {
-  port = 3007;
- } else if(env === 'fme') {
+if(env === 'fme') {
   port = 3011;
  } else {
   port = 3000;
