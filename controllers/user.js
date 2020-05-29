@@ -167,9 +167,9 @@ const verifyEmail = async function (req, res, next) {
 	try {
 		const isVerified = await new Franchise({email: req.body.email}).verifyEmail();
 		if(isVerified !== undefined && isVerified !== null && isVerified !== "" && isVerified.length > 0) {
-			res.send({isVerified : req.body.email});
+		res.send({isVerified : req.body.email});
 		}else{
-			res.send({ isVerified: '' });
+		res.send({ isVerified: '' });
 		}
 		
 	}catch (err) {
