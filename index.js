@@ -146,7 +146,7 @@ let port;
 if(env === 'fme') {
   port = 3011;
  } else {
-  port = 3000;
+  port = 3019;
  }
 
 app.set('port', port);
