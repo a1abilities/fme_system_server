@@ -144,9 +144,9 @@ app.use(function (error, req, res, next) {
 let port;
 
 if(env === 'fme') {
-  port = 3011;
+  port = 3022;
  } else {
-  port = 3019;
+  port = 3011;
  }
 
 app.set('port', port);
