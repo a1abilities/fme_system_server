@@ -61,7 +61,7 @@
     "formik": "^1.5.8",
     "formik-material-ui": "0.0.19",
     "helmet": "^3.19.0",
-    "html-pdf": "^2.2.0",
+    "html-pdf": "^3.0.1",
     "http": "0.0.0",
     "jsonwebtoken": "^8.5.1",
     "material-ui-popup-state": "^1.4.1",
